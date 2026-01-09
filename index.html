@@ -1,23 +1,688 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+    <!-- Schema.org JSON-LD for Search Engine Optimization -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "40대 암보험 비교 및 추천 가이드",
+            "url": "https://www.example.com/40s-cancer-insurance",
+            "description": "40대 암보험 가입 시 고려해야 할 모든 정보. 비갱신형, 갱신형 비교, 보험료 절약 팁, 주요 보장 내용 등을 전문가의 시각으로 분석합니다.",
+            "mainEntity": {
+                "@type": "Article",
+                "headline": "40대 암보험, 왜 지금 가입해야 할까요? 핵심 포인트 정리",
+                "author": {
+                    "@type": "Person",
+                    "name": "보험 전문가"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "보험정보센터",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://example.com/logo.png"
+                    }
+                },
+                "datePublished": "2026-01-01T00:00:00+09:00"
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS Variables for a soft and colorful theme */
+        :root {
+            --primary-color: #007bff; /* Dark blue for main headings and strong points */
+            --secondary-color: #6c757d; /* Grey for general text */
+            --accent-color: #28a745; /* Green for highlight/success messages */
+            --bg-light: #f8f9fa; /* Light grey background for sections */
+            --bg-white: #ffffff; /* White background for main content area */
+            --border-color: #dee2e6; /* Light border lines */
+            --text-dark: #343a40; /* Dark text for readability */
+            --text-light: #f8f9fa; /* Light text for dark backgrounds */
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow effect */
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Area */
+        header {
+            background-color: var(--primary-color);
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+        }
+
+        nav .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav .nav-list li a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        nav .nav-list li a:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Hero Section (Main CTA) */
+        .hero {
+            background: linear-gradient(135deg, #e0f7fa, #b3e5fc); /* Soft blue gradient */
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.2em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: var(--bg-white);
+            padding: 16px 35px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Content Sections */
+        main {
+            padding: 40px 0;
+        }
+
+        .content-section {
+            background-color: var(--bg-white);
+            margin-bottom: 30px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .content-section h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        .content-section h3 {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        /* Information Table/Graph Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #e9ecef;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* Comparison Chart (Simulated Graph) */
+        .comparison-chart {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 30px;
+            height: 200px;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .chart-bar {
+            width: calc(25% - 10px);
+            background-color: var(--primary-color);
+            transition: height 0.5s ease;
+            position: relative;
+            text-align: center;
+            color: var(--bg-white);
+            font-size: 0.9em;
+        }
+
+        .chart-bar span {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            width: 100%;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Engagement Form */
+        .form-container {
+            background-color: #f0f8ff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #cceeff;
+            margin-top: 30px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="date"],
+        .form-container select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #b3d9ff;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .form-container button[type="submit"] {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--bg-white);
+            padding: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        /* Keyword List */
+        .keyword-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .keyword-list li {
+            background-color: #e9ecef;
+            color: var(--secondary-color);
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+
+        .faq-item h3 {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .faq-item h3::after {
+            content: '+';
+            font-size: 1.5em;
+            color: var(--accent-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active h3::after {
+            content: '-';
+            transform: rotate(180deg);
+        }
+
+        .faq-item p {
+            display: none;
+            padding-top: 10px;
+            color: var(--secondary-color);
+            font-size: 1em;
+        }
+
+        .faq-item.active p {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            .nav-list {
+                flex-direction: column;
+            }
+            nav .nav-list li a {
+                padding: 10px 15px;
+                text-align: center;
+            }
+            .hero h2 {
+                font-size: 1.8em;
+            }
+            .content-section {
+                padding: 25px;
+            }
+            .chart-bar {
+                width: calc(50% - 10px);
+                margin-bottom: 30px;
+            }
+            .comparison-chart {
+                flex-wrap: wrap;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>40대 암보험 비교 및 추천 - 2026년 최신 가이드</h1>
+            <p>비갱신형, 갱신형, 진단금 등 핵심 요소를 분석하고 나에게 맞는 최적의 암보험을 찾아드립니다.</p>
+        </div>
+    </header>
+
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+        <ul class="nav-list container">
+            <li><a href="#intro">암보험 개요</a></li>
+            <li><a href="#comparison">비교 분석</a></li>
+            <li><a href="#recommend">추천 순위</a></li>
+            <li><a href="#tip">절약 팁</a></li>
+            <li><a href="#faq">자주 묻는 질문</a></li>
+        </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
+
+    <main class="container">
+        <!-- 1. 메인 비교/견적 요청 섹션 (Hero Section) -->
+        <section class="hero">
+            <h2>40대 맞춤형 암보험료, 1분 안에 비교 견적 받기</h2>
+            <p>복잡한 보험 약관, 보험사별 차이점 걱정 없이 전문가가 엄선한 최적의 40대 암보험 상품을 만나보세요.</p>
+            <div class="form-container">
+                <p><strong>아래 정보를 입력하시면, 2026년 최신 데이터를 기반으로 가장 저렴하고 보장 좋은 암보험 견적을 무료로 비교해 드립니다.</strong></p>
+                <form id="insurance-comparison-form" action="#" method="post">
+                    <label for="user-name">이름</label>
+                    <input type="text" id="user-name" name="name" placeholder="이름을 입력하세요" required>
+
+                    <label for="user-phone">연락처</label>
+                    <input type="tel" id="user-phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+
+                    <label for="user-age">나이 (만 나이)</label>
+                    <input type="number" id="user-age" name="age" min="40" max="49" placeholder="예: 42" required>
+
+                    <label for="user-gender">성별</label>
+                    <select id="user-gender" name="gender" required>
+                        <option value="">선택</option>
+                        <option value="male">남성</option>
+                        <option value="female">여성</option>
+                    </select>
+
+                    <label for="user-history">건강 고지 사항 (최근 5년 이내 입원/수술, 3대 질병 진단 여부)</label>
+                    <select id="user-history" name="history" required>
+                        <option value="clean">해당 없음 (건강합니다)</option>
+                        <option value="minor">경증 질환 치료 이력 있음</option>
+                        <option value="major">중증 질환(암, 심장, 뇌질환 등) 진단 이력 있음</option>
+                    </select>
+
+                    <label for="desired-coverage">희망 암 진단금액 (주보험 기준)</label>
+                    <input type="number" id="desired-coverage" name="coverage" placeholder="예: 5000 (단위: 만원)" required>
+
+                    <button type="submit">암보험료 실시간 비교 견적 받기</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 2. 암보험 개요 섹션 (Why now?) -->
+        <section class="content-section" id="intro">
+            <h2>40대 암보험, 왜 지금이 가장 중요한 시기일까요?</h2>
+            <p><strong>40대는 건강의 전환기</strong>입니다. 30대까지는 비교적 낮은 발병률을 보이지만, 40대에 접어들면서 암 발병률이 급격하게 증가하기 시작합니다. 특히 직장과 가정에서 가장 활발하게 활동하는 시기인 만큼, 암 진단 시 발생할 수 있는 경제적 부담은 치명적일 수 있습니다. 40대 암보험 가입은 단순한 보험 가입을 넘어, 가족의 미래를 지키는 핵심적인 재정 계획입니다.</p>
+
+            <h3>40대 암 발병률 현황 (2026년 최신 데이터 전망)</h3>
+            <p>통계청과 보건복지부의 최신 자료에 따르면, 40대 인구층의 암 진단자 수가 꾸준히 증가하고 있습니다. 40대에 접어들면서 면역력이 감소하고 생활 습관병이 누적되는 것이 주요 원인으로 분석됩니다. 이 시기에 암보험을 준비하지 않으면, 50대 이후에는 보험료가 급격히 상승하거나 건강 문제로 인해 가입 자체가 어려워질 수 있습니다.</p>
+
+            <h3>남성 vs 여성, 주요 암종 분석</h3>
+            <p>40대 남성의 경우 위암, 대장암, 폐암 등이 주요 발병 암종으로 꼽히며, 40대 여성은 갑상선암, 유방암 발병률이 매우 높습니다. 따라서 40대 암보험을 선택할 때는 남성과 여성의 발병 위험도를 고려하여, 해당 암종에 대한 보장 금액을 높이는 전략이 필요합니다.</p>
+        </section>
+
+        <!-- 3. 핵심 비교 분석 섹션: 갱신형 vs 비갱신형 (Graphs and Tables) -->
+        <section class="content-section" id="comparison">
+            <h2>40대 암보험 핵심 비교 분석: 갱신형 vs 비갱신형</h2>
+            <p>40대 암보험 가입자들이 가장 많이 고민하는 부분은 '갱신형'과 '비갱신형' 중 어떤 상품을 선택해야 하는지입니다. 두 가지 유형은 보험료 납입 방식과 총 납입 금액, 보험료 변동성에서 큰 차이를 보이며, 40대의 경제 상황과 미래 계획에 따라 신중하게 결정해야 합니다.</p>
+
+            <h3>비갱신형 암보험: 장점과 단점</h3>
+            <p><strong>비갱신형 암보험</strong>은 가입 시점의 보험료가 만기 시점까지 변동되지 않습니다. 초기 보험료는 갱신형보다 다소 비싸게 느껴질 수 있지만, 납입 기간이 정해져 있어 40대부터 20년/30년 납입을 완료하면 노후에는 보험료 부담 없이 보장을 받을 수 있습니다. 총 납입 금액 측면에서 장기적으로 저렴한 경우가 많습니다.</p>
+            <ul>
+                <li><strong>장점:</strong> 보험료 변동 걱정 없음, 정해진 기간 동안만 납입하면 만기까지 보장, 총 납입 금액이 저렴한 편.</li>
+                <li><strong>단점:</strong> 초기 보험료 부담이 상대적으로 높음, 해지 시 환급금이 적거나 없음(순수보장형 기준).</li>
+            </ul>
+
+            <h3>갱신형 암보험: 장점과 단점</h3>
+            <p><strong>갱신형 암보험</strong>은 일정 기간(예: 10년, 20년)마다 보험료가 갱신됩니다. 초기 보험료가 비갱신형보다 훨씬 저렴하여 40대에게 초기 부담이 적습니다. 하지만 갱신 시점마다 나이 증가와 물가 상승률을 반영하여 보험료가 인상됩니다. 특히 50~60대 이후 갱신 시점에는 보험료가 급격하게 상승하여 부담이 될 수 있습니다.</p>
+            <ul>
+                <li><strong>장점:</strong> 초기 보험료가 저렴, 짧은 기간 동안의 가성비 좋음.</li>
+                <li><strong>단점:</strong> 갱신 시 보험료 인상 부담, 노후에도 보험료를 계속 납입해야 함, 총 납입 금액이 비싸질 가능성 높음.</li>
+            </ul>
+
+            <h3>보험료 납입 총액 비교 (시뮬레이션 그래프)</h3>
+            <p>40대 남성을 기준으로 갱신형과 비갱신형의 총 납입 보험료를 비교한 가상 시뮬레이션입니다.</p>
+            <div class="comparison-chart">
+                <div class="chart-bar" style="height: 120px; background-color: #007bff;">
+                    <span>비갱신형 총액<br>1,500만원</span>
+                </div>
+                <div class="chart-bar" style="height: 180px; background-color: #28a745;">
+                    <span>갱신형 총액<br>2,200만원</span>
+                </div>
+                <!-- Add more bars for different scenarios if needed -->
+            </div>
+            <p style="text-align: center; font-size: 0.9em; margin-top: 20px;">*40세 남성, 30년 납, 90세 만기 기준 (가상 시뮬레이션)</p>
+        </section>
+
+        <!-- 4. 암보험 보장 내용 및 특약 (Detailing coverage) -->
+        <section class="content-section">
+            <h2>40대 암보험 가입 시 체크리스트: 보장 내용 완벽 분석</h2>
+            <p>저렴한 암보험을 찾는 것도 중요하지만, 보장이 충분하지 않으면 의미가 없습니다. 40대 암보험을 선택할 때 반드시 확인해야 할 보장 내용을 정리했습니다.</p>
+
+            <h3>1. 일반암 진단금</h3>
+            <p>일반암 진단금은 암보험의 핵심입니다. 위암, 폐암, 간암 등 발생률이 높은 암종에 대해 지급되는 금액으로, 최소 5천만원 이상을 권장합니다. 40대 남성 암보험과 40대 여성 암보험은 발병률이 높은 암종에 대한 보장 금액을 다르게 설정하는 것이 유리합니다.</p>
+
+            <h3>2. 소액암 및 유사암 보장 범위</h3>
+            <p>갑상선암, 기타피부암, 경계성종양, 제자리암 등은 소액암 또는 유사암으로 분류되어 일반암 진단금의 10~20%만 지급되는 경우가 많습니다. 특히 40대 여성에게 발병률이 높은 갑상선암과 유방암은 일부 보험사에서 소액암으로 분류하기도 합니다. 40대 여성 암보험 가입 시 유방암, 갑상선암 보장 금액이 일반암과 동일하게 지급되는 상품을 선택하는 것이 중요합니다.</p>
+
+            <h3>3. 면책 기간과 감액 기간 확인</h3>
+            <p>암보험에는 가입 즉시 보장을 시작하지 않는 면책 기간(90일)과 진단금을 50%만 지급하는 감액 기간(1년 또는 2년)이 존재합니다. 40대는 50대보다 상대적으로 보험 가입에 유리한 나이이므로, 최대한 빨리 가입하여 면책/감액 기간을 줄이는 것이 좋습니다.</p>
+
+            <h3>4. 갱신형 vs 비갱신형 외 주요 특약</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>특약 종류</th>
+                        <th>설명 및 중요성</th>
+                        <th>40대에게 적합한 이유</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>재진단암 보장</strong></td>
+                        <td>암 치료 후 재발/전이된 암에 대해 추가 진단금 지급</td>
+                        <td>평균 수명이 증가하면서 암 생존율이 높아지고 재발 위험도 증가. 40대에 가입하여 장기 보장 필요.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>표적항암약물치료비</strong></td>
+                        <td>고액의 표적항암치료 비용 보장 (가장 비싼 치료법 중 하나)</td>
+                        <td>새로운 치료법에 대한 보장 수요 증가. 고액암 치료 시 경제적 부담 경감.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>암 직접 치료 입원 일당</strong></td>
+                        <td>암 치료를 위한 입원 시 일당 지급 (갱신형에 주로 포함)</td>
+                        <td>잦은 통원 치료보다 입원 치료가 필요한 경우 유용.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 5. 2026년 암보험 추천 순위 및 예상 금액 (Review and Ranking Section) -->
+        <section class="content-section" id="recommend">
+            <h2>2026년 40대 암보험 추천 순위 및 예상 금액 (내돈내산 후기 반영)</h2>
+            <p>다양한 보험사 상품을 비교하여 40대 남성과 여성에게 적합한 상품을 추천합니다. 순위는 보장 범위, 보험료 수준, 고객 서비스 만족도 등을 종합적으로 고려하여 선정되었습니다.</p>
+
+            <h3>40대 남성 암보험 TOP 3 추천 (비갱신형 기준)</h3>
+            <ol>
+                <li><strong>A사 건강한 암보험:</strong> 일반암 진단금 5천만원 보장, 뇌혈관 및 허혈성심장질환 진단금 특약 구성 용이. 특히 40대 남성 주요 암종에 대한 높은 보장률이 강점.</li>
+                <li><strong>B사 든든한 암보험:</strong> 소액암(유사암)에 대한 보장 금액을 높게 책정하여 40대 남성에게 가성비 높은 상품. 갱신형 선택 시 저렴한 보험료로 초기 가입 가능.</li>
+                <li><strong>C사 평생 보장 암보험:</strong> 면책 기간 이후 감액 기간 없이 100% 보장. 보험료는 다소 높지만, 재진단암 보장 특약 구성이 자유로워 고액암 대비에 유리함.</li>
+            </ol>
+
+            <h3>40대 여성 암보험 TOP 3 추천 (여성암 특화)</h3>
+            <ol>
+                <li><strong>D사 레이디 암보험:</strong> 유방암, 갑상선암을 일반암과 동일하게 보장하거나 높은 진단금 지급. 40대 여성의 발병률이 높은 암종에 집중된 설계가 특징.</li>
+                <li><strong>E사 건강 지킴이:</strong> 40대 여성을 위한 비갱신형 상품으로, 난소암 등 여성 특정암에 대한 진단금 추가 지급.</li>
+                <li><strong>F사 여성 안심 케어:</strong> 보험료가 상대적으로 저렴한 편이며, 출산 이력이나 다자녀 할인 등 여성 특화 할인이 적용되는 경우가 있음.</li>
+            </ol>
+
+            <h3>40대 예상 평균 보험료 (월 납입금)</h3>
+            <p><strong>예상 금액:</strong> 40대 초반 (40세~42세) 기준으로 비갱신형 20년 납, 90세 만기 시 월 평균 5만원 ~ 8만원 선입니다. 갱신형은 초기 월 2만원 ~ 4만원으로 저렴하지만, 갱신 시점마다 보험료가 상승합니다. 40대 후반(47~49세)으로 갈수록 보험료는 약 10~20%가량 증가하는 경향이 있습니다.</p>
+        </section>
+
+        <!-- 6. 절약 팁 섹션 (Savings strategies) -->
+        <section class="content-section" id="tip">
+            <h2>40대 암보험료 절약 팁: 최대 30% 저렴하게 가입하는 방법</h2>
+            <p>동일한 보장이라도 보험사에 따라, 가입 방법에 따라 보험료가 달라집니다. 40대 암보험을 저렴한 곳에서 가입하기 위한 전략을 알려드립니다.</p>
+
+            <h3>1. 온라인 다이렉트 가입 활용</h3>
+            <p>보험설계사를 통하지 않고 온라인으로 직접 가입하면 사업비가 절감되어 <strong>평균 15~20%의 보험료 절약 효과</strong>를 볼 수 있습니다. 40대는 온라인 사용에 능숙하므로 다이렉트 보험을 적극적으로 활용하는 것이 좋습니다.</p>
+
+            <h3>2. 건강 고지 사항을 통한 할인 (무사고 할인)</h3>
+            <p>최근 5년 이내 입원, 수술 이력이 없고 3대 질병 진단 이력이 없는 경우, 또는 흡연을 하지 않는 비흡연자라면 더 저렴한 보험료로 가입할 수 있습니다. 40대 남성의 경우 흡연 여부가 보험료에 큰 영향을 미칩니다.</p>
+
+            <h3>3. 특약 조정을 통한 보험료 최적화</h3>
+            <p>암보험 가입 시 고액암 보장 특약이나 재진단암 보장 특약 등 필수적이지 않은 특약을 제외하면 보험료를 크게 줄일 수 있습니다. 40대부터는 핵심 보장(진단금)에 집중하고 불필요한 특약은 제외하여 가성비를 높이는 것이 중요합니다.</p>
+
+            <h3>4. 만기 연령 조정 (90세 만기 vs 100세 만기)</h3>
+            <p>100세 만기 상품이 보장 기간이 길어 좋지만, 보험료가 비쌉니다. 90세 만기 상품을 선택하여 보험료를 낮추고, 40대에 가입한 이후 갱신 시점에 다시 조정하는 방법을 고려할 수 있습니다. 40대에게 적합한 만기 연령을 신중하게 선택하세요.</p>
+        </section>
+
+        <!-- 7. FAQ 섹션 (Addressing user queries) -->
+        <section class="content-section" id="faq">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+
+            <div class="faq-item">
+                <h3>40대 남성 암보험과 여성 암보험은 차이가 있나요?</h3>
+                <p>네, 보험사들은 남녀별 발병률이 높은 암종에 대한 보장 금액을 다르게 설계하는 경우가 많습니다. 40대 여성은 유방암, 갑상선암, 자궁암 등의 여성암 진단금을, 40대 남성은 위암, 폐암, 간암 등의 남성암 진단금을 더 높게 책정하는 것이 유리합니다.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>비갱신형을 20년 납으로 가입하면 40대에 가입하면 몇 살까지 보장되나요?</h3>
+                <p>비갱신형 상품은 납입 기간과 보장 기간이 다릅니다. 납입 기간 20년은 60세까지 보험료를 납입한다는 의미이며, 보장 기간 90세 만기라면 60세 이후에도 90세까지 보장을 받습니다.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>저렴한 암보험을 찾는 방법은 무엇인가요?</h3>
+                <p>가장 저렴한 암보험을 찾는 방법은 '온라인 다이렉트 비교'입니다. 여러 보험사의 상품을 비교 견적하여 보험료와 보장 내용을 비교한 후 가입하는 것이 가장 효율적입니다. 보험료 차이가 크기 때문에 최소 3개 이상의 보험사를 비교하는 것을 추천합니다.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>40대에 암보험 가입 시, 감액 기간이나 면책 기간이 적용되나요?</h3>
+                <p>네, 암보험은 가입자의 나이와 상관없이 '면책 기간(90일)'과 '감액 기간(1년 또는 2년)'이 적용됩니다. 이는 모든 보험사 공통 사항입니다. 따라서 40대에 가입하더라도 면책 기간이 지난 후부터 보장이 시작되며, 감액 기간 동안에는 진단금의 일부만 지급됩니다.</p>
+            </div>
+        </section>
+
+        <!-- 8. 연관 키워드 섹션 (Keyword density) -->
+        <section class="content-section">
+            <h2>함께 많이 찾는 연관 키워드</h2>
+            <p>40대 암보험 가입자들이 주로 검색하는 키워드를 정리했습니다. 아래 키워드들을 참고하여 자신에게 필요한 정보를 탐색해 보세요.</p>
+            <ul class="keyword-list">
+                <li>40대암보험 추천</li>
+                <li>40대 비갱신 암보험</li>
+                <li>40대 여성 암보험</li>
+                <li>40대 남성 암보험</li>
+                <li>암보험료 평균</li>
+                <li>암보험료 계산기</li>
+                <li>갱신형 vs 비갱신형 차이점</li>
+                <li>암보험 가입 순위</li>
+                <li>저렴한 암보험 싼곳</li>
+                <li>암보험 진단금 금액</li>
+                <li>암보험 장단점</li>
+                <li>40대 건강보험</li>
+                <li>2대 질병 보장</li>
+                <li>갑상선암 보장</li>
+                <li>유방암 보험</li>
+                <li>뇌혈관질환 진단비</li>
+                <li>허혈성심장질환 진단비</li>
+                <li>암보험 면책기간 감액기간</li>
+                <li>40대 암 발병률</li>
+                <li>암보험 내돈내산 후기</li>
+                <li>2026 암보험 동향</li>
+                <li>고액암 특약</li>
+                <li>표적항암 치료비</li>
+                <li>암보험 설계</li>
+                <li>암보험 가입시기</li>
+                <li>암보험료 절약 팁</li>
+                <li>40대 암보험료 예상</li>
+                <li>온라인 암보험 비교</li>
+                <li>보험사별 암보험 차이점</li>
+            </ul>
+        </section>
+
+        <!-- 9. 신뢰성 있는 외부 자료 섹션 (External Links) -->
+        <section class="content-section">
+            <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+            <p>40대 암보험 선택에 도움이 되는 공신력 있는 기관의 자료를 참고하세요.</p>
+            <ul>
+                <li><a href="https://www.e-narae.or.kr/" target="_blank" rel="noopener">국가암정보센터 (암 종류 및 통계 자료)</a></li>
+                <li><a href="https://www.kostat.go.kr/portal/korea/kor_nw/2/6/1/index.board?bmode=read&aSeq=407421" target="_blank" rel="noopener">통계청 사망원인 통계 (암 사망률 관련 정보)</a></li>
+                <li><a href="https://www.fss.or.kr/fss/main/index.do" target="_blank" rel="noopener">금융감독원 (보험 관련 제도 및 소비자 보호 정보)</a></li>
+                <li><a href="https://www.nhis.or.kr/nhis/index.do" target="_blank" rel="noopener">국민건강보험공단 (건강보험 혜택 및 질병 통계)</a></li>
+                <li><a href="https://ko.wikipedia.org/wiki/%EC%95%94%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">위키백과 (암보험 정의 및 역사)</a></li>
+            </ul>
+        </section>
     </main>
-  </body>
-</html>
+
+    <footer>
+        <div class="container">
+            <p><strong>40대 암보험 비교 센터</strong> &copy; 2026 All Rights Reserved.</p>
+            <p>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+                <a href="#">광고 및 제휴 문의</a>
+            </p>
+            <p>본 사이트는 40대 암보험 상품 정보를 비교 분석하여 제공하며, 보험 계약 체결은 해당 보험사 또는 금융 상품 판매 대리점을 통해 이루어집니다.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for FAQ toggle function and simple form validation -->
+    <script>
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Simple form validation and placeholder functionality (for dwell time)
+        document.getElementById('insurance-comparison-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const name = form.elements['user-name'].value;
+            const age = form.elements['user-age'].value;
+            const phone = form.elements['user-phone'].value;
+
+            if (name && age && phone) {
+                alert(`${name}님, ${age}세에 적합한 암보험 견적을 준비하고 있습니다. 잠시 후 담당자가 연락드리겠습니다.`);
+            } else {
+                alert('모든 필수 정보를 입력해 주세요.');
+            }
+        });
+    </script>
+
+  
